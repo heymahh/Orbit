@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#060912"><title>Orbit — Seus projetos, em um só lugar</title>
-<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20261111-apoio-abas"><script src="/release-notifications.js?v=20261109-management" defer></script><script src="/apoio.js?v=20261111-apoio-abas" defer></script><script src="/app.js?v=20261111-apoio-abas" defer></script>
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20261111-apoio-github"><script src="/release-notifications.js?v=20261109-management" defer></script><script src="/app.js?v=20261111-apoio-github" defer></script>
 </head>
 <body>
 <div class="app-shell">
@@ -89,37 +89,6 @@
     <button class="mini-icon" type="button" data-action="close-support" aria-label="Fechar" data-icon="close" autofocus></button>
   </div>
   <p id="support-description">O apoio é voluntário e ajuda a manter as próximas versões do Orbit.</p>
-  <div id="support-local" hidden>
-    <div id="support-methods" class="support-tabs" role="tablist" aria-label="Forma de apoio">
-      <button id="support-tab-pix" class="support-tab" type="button" role="tab" aria-controls="support-pix" aria-selected="false"><span data-icon="pix"></span>Pix</button>
-      <button id="support-tab-btc" class="support-tab" type="button" role="tab" aria-controls="support-btc" aria-selected="false" tabindex="-1" data-network="BNB Smart Chain (BEP20)"><span data-icon="bitcoin"></span>Bitcoin (BTC)</button>
-      <button id="support-tab-eth" class="support-tab" type="button" role="tab" aria-controls="support-eth" aria-selected="false" tabindex="-1" data-network="Ethereum (ERC20)"><span data-icon="ether"></span>Ether (ETH)</button>
-    </div>
-    <div id="support-pix" role="tabpanel" aria-labelledby="support-tab-pix" hidden>
-      <p class="field-help">Escaneie o QR Code ou use Pix Copia e Cola no app do seu banco. Depois, escolha quanto doar.</p>
-      <img class="support-qr" id="pix-qr" width="159" height="159" alt="QR Code Pix para apoiar o Orbit" hidden>
-      <div class="pix-actions">
-        <button class="button primary" id="copy-pix-code" type="button" hidden>Copiar código Pix</button>
-        <button class="button" id="copy-pix" type="button" hidden>Copiar chave Pix</button>
-      </div>
-      <textarea id="pix-code" aria-label="Código Pix Copia e Cola" rows="3" readonly spellcheck="false" hidden></textarea>
-      <input id="pix-key" aria-label="Chave Pix aleatória" type="text" value="bfd3db4d-75f3-4f61-a50a-311c33fdbfef" readonly spellcheck="false" hidden>
-    </div>
-    <div id="support-btc" role="tabpanel" aria-labelledby="support-tab-btc" hidden>
-      <div id="support-crypto">
-        <p class="support-network">Rede de envio <strong id="support-network"></strong></p>
-        <p class="field-help">Selecione essa rede na carteira ou corretora de origem. O QR contém o endereço de depósito.</p>
-        <img class="support-qr" width="148" height="148" alt="Código QR do endereço de depósito" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeAQAAAAB6HIMaAAABv0lEQVR4nO1YS2rEMAx9tgyzdKAHyFE80AP0SKVHmhskR+kBAs5yQOEVydN21c9utBiRGMXaPJ6f9UkifrQj/xwDHkE8SLibEkAO5Tbp0Eqgsdu3kBoSrZDsDXWR3oS2js14aIst+yQb5H3SAtlfASS0ewHKf6J1u5aG2tPcv7cywqItdSnbGXviHhttJXbo03rMvWwvJuYRyJFzQvt87DvsLaN7R4E+XZ4BvW0E5Va4mFcXctG6aKX0uNxeE0Q9jylO26TAMUEjcpsBnEjs52M2hq8zTx0cbOeISlBYCVOAHYqmfsVsP0dEK1Zt4Vp16aKRi0RFSz/6kcqsYfCyGxatWhJoqBxiYLc2LCxaesdlPRhvjxWLqGh1HH33lOskR9atjBZ3XLG6DJLD5gRU68bVKQWgznDgbvy81ktB0tJkm0pF2WLWMji3lmN9wLEaMSwst/Q3TSiKE21NCMyt2a34elGzFpexZ14ZvYFrwJNYQLTZlj0V4Ehm0s0B1rsC+k+wmVa9G+f7a8i5LH957OttiMCa5rf7A/pVt/TKa4lrTJRRdXuklCak2ZPt0PDwczS06fG3GfFO5RHEHyR8ALSrXJXbSQGcAAAAAElFTkSuQmCC">
-        <label for="support-address">Endereço de depósito</label>
-        <textarea id="support-address" rows="2" readonly spellcheck="false">0x263add4f63569fbab0ffdbda025354c66a3c5ef2</textarea>
-        <button class="button primary" id="copy-support-address" type="button">Copiar endereço</button>
-      </div>
-    </div>
-    <div id="support-eth" role="tabpanel" aria-labelledby="support-tab-eth" hidden></div>
-    <p id="support-status" role="status"></p>
-  </div>
-  <div id="support-external" hidden>
-    <a class="button primary" target="_blank" rel="noopener noreferrer">Ir para a página de apoio <span data-icon="external"></span></a>
-  </div>
+  <a id="support-external" class="button primary" target="_blank" rel="noopener noreferrer">Ver formas de apoiar <span data-icon="external"></span></a>
 </dialog>
 </body></html>

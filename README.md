@@ -81,10 +81,6 @@ Os pacotes ficam em `dist/`. O workflow [Build desktop packages](.github/workflo
 
 ## Apoiar o Orbit
 
-O Orbit é gratuito. Se quiser apoiar o desenvolvimento, clique no joinha no topo do aplicativo. O modal **Apoiar o Orbit** oferece **Pix**, **BTC via BNB Smart Chain (BEP20)** e **ETH via Ethereum (ERC20)**. Para Pix, escaneie o QR Code ou copie o código e escolha o valor no app do seu banco.
+Você pode apoiar o projeto dando uma estrela no GitHub, compartilhando o Orbit ou enviando sugestões e relatos de problemas. O apoio financeiro poderá ser disponibilizado pelo GitHub Sponsors após a aprovação do perfil.
 
-Chave Pix para copiar manualmente
-
-```text
-bfd3db4d-75f3-4f61-a50a-311c33fdbfef
-```
+[Ver o repositório](https://github.com/heymahh/Orbit) · [Enviar uma sugestão ou reportar um problema](https://github.com/heymahh/Orbit/issues/new)

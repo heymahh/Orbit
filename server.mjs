@@ -592,7 +592,7 @@ export async function createApp({ dataDirectory = process.env.ORBIT_DATA || path
       const route = url.pathname;
       if (!route.startsWith('/api/')) {
         if (request.method !== 'GET') throw httpError(405, 'Método não permitido.');
-        const asset = { '/': 'index.html', '/apoio': 'apoio.html', '/apoio.js': 'apoio.js', '/app.js': 'app.js', '/release-notifications.js': 'release-notifications.js', '/style.css': 'style.css', '/icon.svg': 'icon.svg' }[route];
+        const asset = { '/': 'index.html', '/apoio': 'apoio.html', '/app.js': 'app.js', '/release-notifications.js': 'release-notifications.js', '/style.css': 'style.css', '/icon.svg': 'icon.svg' }[route];
         if (!asset) throw httpError(404, 'Página não encontrada.');
         return send(200, await fs.readFile(path.join(ROOT, 'public', asset)), MIMES[path.extname(asset)]);
       }

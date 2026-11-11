@@ -79,4 +79,6 @@ Packages are written to `dist/`. The [Build desktop packages](../.github/workflo
 
 ## Support Orbit
 
-Orbit is free. Click the thumbs-up icon in the app to open **Apoiar o Orbit**. You can donate via **Pix**, **BTC on BNB Smart Chain (BEP20)**, or **ETH on Ethereum (ERC20)**. For Pix, scan the QR Code or copy the payment code and choose an amount in your banking app.
+You can support the project by starring it on GitHub, sharing Orbit, or submitting feedback and bug reports. Financial support can be enabled through GitHub Sponsors once the profile is approved.
+
+[View the repository](https://github.com/heymahh/Orbit) · [Send feedback or report an issue](https://github.com/heymahh/Orbit/issues/new)
