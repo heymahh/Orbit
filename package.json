@@ -1,0 +1,32 @@
+{
+  "name": "orbit-local",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Explore, baixe e execute projetos do GitHub em um app local.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs --open",
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/build-client.mjs --check && node --check server.mjs && node --check lib/runner.mjs && node --check public/app.js && node --check public/release-notifications.js && node --check public/apoio.js && node --check desktop/main.mjs && node --check desktop/preload.cjs && node --check desktop/worker.cjs && node --check desktop/update.mjs && node --check electron-builder.cjs",
+    "build": "node scripts/build-client.mjs",
+    "desktop": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --config electron-builder.cjs --win --x64 --publish never",
+    "dist:mac": "npm run build && electron-builder --config electron-builder.cjs --mac --arm64 --x64 --publish never",
+    "dist:linux": "npm run build && electron-builder --config electron-builder.cjs --linux --x64 --publish never"
+  },
+  "dependencies": {
+    "electron-updater": "6.8.11"
+  },
+  "devDependencies": {
+    "electron": "45.3.0",
+    "electron-builder": "26.18.0"
+  },
+  "main": "desktop/main.mjs",
+  "author": "Orbit",
+  "homepage": "http://127.0.0.1:4311",
+  "desktopName": "orbit-local.desktop",
+  "orbitSupportUrl": "/apoio"
+}

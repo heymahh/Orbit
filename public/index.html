@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#060912"><title>Orbit — Seus projetos, em um só lugar</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v=20261111-apoio-abas"><script src="/release-notifications.js?v=20261109-management" defer></script><script src="/apoio.js?v=20261111-apoio-abas" defer></script><script src="/app.js?v=20261111-apoio-abas" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<div class="aurora" aria-hidden="true"><i class="aurora-a"></i><i class="aurora-b"></i><i class="aurora-c"></i></div>
+<header class="console-top">
+<div class="clock-block">
+<span class="greeting" id="greeting">Bem-vindo</span>
+<div class="clock-line"><time class="clock" id="clock">--:--</time><span class="clock-divider" aria-hidden="true"></span><span class="date" id="date"></span></div>
+</div>
+<form id="global-search" class="glass-pill search-pill" role="search"><input id="search-input" type="search" aria-label="Buscar projetos no GitHub" placeholder="Buscar no GitHub" autocomplete="off" data-spatial><button class="search-submit" type="submit" aria-label="Buscar" data-icon="search" data-spatial></button></form>
+<div class="console-menu">
+<nav class="console-nav" aria-label="Seções">
+<button class="glass-pill" data-nav="explore" data-spatial><span data-icon="compass"></span><span class="pill-label">Explorar</span></button>
+<button class="glass-pill" data-nav="library" data-spatial><span data-icon="layers"></span><span class="pill-label">Biblioteca</span><span id="library-count" class="pill-count">0</span></button>
+<button class="glass-pill" data-nav="terminal" data-spatial><span data-icon="terminal"></span><span class="pill-label">Terminal</span><span id="running-dot"></span></button>
+</nav>
+<div class="console-tools">
+<button id="updates-button" class="glass-pill icon-pill updates-bell" aria-label="Atualizações" aria-controls="updates-panel" aria-expanded="false" title="Atualizações dos projetos" data-spatial hidden><span data-icon="bell"></span><span id="updates-count" class="updates-count" hidden>0</span></button>
+<button class="glass-pill icon-pill" data-nav="settings" aria-label="Ambientes" title="Ambientes" data-spatial><span data-icon="settings"></span></button>
+<button id="support-button" class="glass-pill icon-pill" type="button" aria-label="Apoiar o Orbit" aria-haspopup="dialog" aria-controls="support-dialog" title="Apoiar o Orbit" data-action="open-support" data-spatial hidden><span data-icon="thumbs-up"></span></button>
+<span class="connection" title="Conexão com o workspace"><span id="connection-dot" class="status-dot green"></span><span id="connection-status" hidden>Conectado ao workspace</span></span>
+</div>
+</div>
+</header>
+<main id="main" tabindex="-1"><div class="loading-screen"><span class="spinner"></span> Preparando seu workspace…</div></main>
+<section id="task-progress" class="task-tray" aria-label="Progresso das tarefas" hidden></section>
+<section id="updates-panel" class="updates-panel" aria-labelledby="updates-heading" hidden>
+<div class="updates-heading"><h2 id="updates-heading">Atualizações</h2><button id="updates-close" class="mini-icon" aria-label="Fechar atualizações" data-icon="close"></button></div>
+<p class="updates-description">Novas Releases dos projetos da sua biblioteca. Verificação ao iniciar e a cada hora enquanto o Orbit está em execução.</p>
+<div class="updates-controls"><button id="updates-check" class="button small">Verificar agora</button><button id="updates-read-all" class="button small" disabled>Marcar todas como lidas</button></div>
+<p id="updates-status" class="updates-status" role="status">A primeira verificação acontecerá em instantes.</p>
+<div id="updates-list" class="updates-list"></div>
+<div class="updates-desktop"><p id="updates-permission"></p><div class="updates-controls"><button id="updates-desktop" class="button small">Ativar no Windows</button><button id="updates-test" class="button small" hidden>Testar notificação</button></div></div>
+</section>
+<p id="updates-live" class="updates-live" role="status" aria-live="polite" aria-atomic="true"></p>
+<aside id="update-popup" class="update-popup" aria-label="Nova atualização" hidden><div class="update-popup-symbol" data-icon="bell"></div><div class="update-popup-copy"><div><strong id="update-popup-title"></strong><p id="update-popup-body"></p></div><button id="update-popup-open" class="button small">Ver atualizações</button></div><button id="update-popup-close" class="mini-icon" aria-label="Dispensar aviso" data-icon="close"></button></aside>
+<nav class="tab-bar" aria-label="Seções">
+<button data-nav="explore"><span data-icon="compass"></span>Explorar</button>
+<button data-nav="library"><span data-icon="layers"></span>Biblioteca</button>
+<button data-nav="terminal"><span data-icon="terminal"></span>Terminal</button>
+<button data-nav="settings"><span data-icon="settings"></span>Ambientes</button>
+</nav>
+<div id="frame-dock" hidden></div>
+</div>
+<dialog id="import-dialog"><form id="import-form"><div class="dialog-heading"><span class="dialog-symbol" data-icon="github"></span><button type="button" class="mini-icon" data-action="close-import" aria-label="Fechar" data-icon="close"></button></div><h2>Um novo projeto na sua órbita.</h2><p>Cole o endereço de um repositório público. O Orbit baixa os arquivos e identifica como começar.</p><label for="import-url">Repositório do GitHub</label><input id="import-url" name="url" placeholder="https://github.com/autor/projeto" required autocomplete="off"><p class="field-help">Você também pode usar autor/projeto.</p><div class="import-options"><label for="import-parent">Pasta de instalação</label><div class="import-folder-controls"><input id="import-parent" name="installationParent" placeholder="Pasta padrão do Orbit" maxlength="2000"><button id="choose-import-folder" class="button small" type="button" data-action="choose-import-folder">Escolher pasta</button></div><p class="field-help">O Orbit cria uma subpasta própria para este app. Deixe vazio para usar o local padrão. Dados Docker seguem o armazenamento do Docker.</p><div class="checkbox-row" id="import-shortcut-option"><input id="import-shortcut" type="checkbox"><label for="import-shortcut">Criar atalho na área de trabalho após o download</label></div></div><p class="inline-error" id="import-error" role="alert"></p><div class="dialog-note"><span data-icon="info"></span>Baixar não executa o código. Você revisa os comandos antes de iniciar.</div><button class="button primary wide" id="import-submit" type="submit"><span data-icon="download"></span> Baixar projeto</button></form></dialog>
+<dialog id="removal-dialog" aria-labelledby="removal-title" aria-describedby="removal-description"><form id="removal-form"><h2 id="removal-title"></h2><p id="removal-description"></p><p id="removal-path" class="management-path"></p><ul id="removal-projects" hidden></ul><p id="removal-progress" role="status" tabindex="-1"></p><p id="removal-error" class="inline-error" role="alert"></p><div class="management-controls"><button id="removal-cancel" class="button" type="button" data-action="cancel-removal">Cancelar</button><button id="removal-confirm" class="button danger" type="submit">Remover</button></div></form></dialog><div id="toast" role="status" aria-live="polite"></div>
+<dialog id="project-plan-dialog" aria-labelledby="project-plan-title" aria-describedby="project-plan-summary">
+  <form id="project-plan-form">
+    <h2 id="project-plan-title"></h2>
+    <p id="project-plan-version"></p>
+    <fieldset id="project-plan-packages" hidden><legend>Tipo de instalação</legend><div id="project-plan-package-options"></div></fieldset>
+    <p id="project-plan-summary" role="status"></p>
+    <ul id="project-plan-requirements"></ul>
+    <details id="project-plan-notes" hidden><summary>Notas da versão</summary><p id="project-plan-notes-text"></p></details>
+    <p><a id="project-plan-release" href="https://github.com/" target="_blank" rel="noopener noreferrer" hidden>Ver release no GitHub</a></p>
+    <p id="project-plan-error" class="inline-error" role="alert"></p>
+    <div class="management-controls">
+      <button id="project-plan-cancel" class="button" type="button" data-action="cancel-project-plan" autofocus>Cancelar</button>
+      <button id="project-plan-confirm" class="button primary" type="submit" disabled>Continuar</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="home-category-dialog" aria-labelledby="home-category-title">
+  <form id="home-category-form">
+    <h2 id="home-category-title"></h2>
+    <label for="home-category-name">Nome</label>
+    <input id="home-category-name" name="name" maxlength="60" autocomplete="off" required>
+    <fieldset>
+      <legend>Apps favoritos</legend>
+      <div id="home-category-apps"></div>
+    </fieldset>
+    <p id="home-category-error" class="inline-error" role="alert"></p>
+    <div class="management-controls">
+      <button class="button" type="button" data-action="cancel-home-category">Cancelar</button>
+      <button class="button danger" type="button" data-action="delete-home-category" title="Os apps voltam para Sem categoria" hidden>Excluir categoria</button>
+      <button class="button primary" type="submit">Salvar</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="support-dialog" aria-labelledby="support-heading" aria-describedby="support-description" closedby="any">
+  <div class="dialog-heading">
+    <h2 id="support-heading">Apoiar o Orbit</h2>
+    <button class="mini-icon" type="button" data-action="close-support" aria-label="Fechar" data-icon="close" autofocus></button>
+  </div>
+  <p id="support-description">O apoio é voluntário e ajuda a manter as próximas versões do Orbit.</p>
+  <div id="support-local" hidden>
+    <div id="support-methods" class="support-tabs" role="tablist" aria-label="Forma de apoio">
+      <button id="support-tab-pix" class="support-tab" type="button" role="tab" aria-controls="support-pix" aria-selected="false"><span data-icon="pix"></span>Pix</button>
+      <button id="support-tab-btc" class="support-tab" type="button" role="tab" aria-controls="support-btc" aria-selected="false" tabindex="-1" data-network="BNB Smart Chain (BEP20)"><span data-icon="bitcoin"></span>Bitcoin (BTC)</button>
+      <button id="support-tab-eth" class="support-tab" type="button" role="tab" aria-controls="support-eth" aria-selected="false" tabindex="-1" data-network="Ethereum (ERC20)"><span data-icon="ether"></span>Ether (ETH)</button>
+    </div>
+    <div id="support-pix" role="tabpanel" aria-labelledby="support-tab-pix" hidden>
+      <p class="field-help">Escaneie o QR Code ou use Pix Copia e Cola no app do seu banco. Depois, escolha quanto doar.</p>
+      <img class="support-qr" id="pix-qr" width="159" height="159" alt="QR Code Pix para apoiar o Orbit" hidden>
+      <div class="pix-actions">
+        <button class="button primary" id="copy-pix-code" type="button" hidden>Copiar código Pix</button>
+        <button class="button" id="copy-pix" type="button" hidden>Copiar chave Pix</button>
+      </div>
+      <textarea id="pix-code" aria-label="Código Pix Copia e Cola" rows="3" readonly spellcheck="false" hidden></textarea>
+      <input id="pix-key" aria-label="Chave Pix aleatória" type="text" value="bfd3db4d-75f3-4f61-a50a-311c33fdbfef" readonly spellcheck="false" hidden>
+    </div>
+    <div id="support-btc" role="tabpanel" aria-labelledby="support-tab-btc" hidden>
+      <div id="support-crypto">
+        <p class="support-network">Rede de envio <strong id="support-network"></strong></p>
+        <p class="field-help">Selecione essa rede na carteira ou corretora de origem. O QR contém o endereço de depósito.</p>
+        <img class="support-qr" width="148" height="148" alt="Código QR do endereço de depósito" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeAQAAAAB6HIMaAAABv0lEQVR4nO1YS2rEMAx9tgyzdKAHyFE80AP0SKVHmhskR+kBAs5yQOEVydN21c9utBiRGMXaPJ6f9UkifrQj/xwDHkE8SLibEkAO5Tbp0Eqgsdu3kBoSrZDsDXWR3oS2js14aIst+yQb5H3SAtlfASS0ewHKf6J1u5aG2tPcv7cywqItdSnbGXviHhttJXbo03rMvWwvJuYRyJFzQvt87DvsLaN7R4E+XZ4BvW0E5Va4mFcXctG6aKX0uNxeE0Q9jylO26TAMUEjcpsBnEjs52M2hq8zTx0cbOeISlBYCVOAHYqmfsVsP0dEK1Zt4Vp16aKRi0RFSz/6kcqsYfCyGxatWhJoqBxiYLc2LCxaesdlPRhvjxWLqGh1HH33lOskR9atjBZ3XLG6DJLD5gRU68bVKQWgznDgbvy81ktB0tJkm0pF2WLWMji3lmN9wLEaMSwst/Q3TSiKE21NCMyt2a34elGzFpexZ14ZvYFrwJNYQLTZlj0V4Ehm0s0B1rsC+k+wmVa9G+f7a8i5LH957OttiMCa5rf7A/pVt/TKa4lrTJRRdXuklCak2ZPt0PDwczS06fG3GfFO5RHEHyR8ALSrXJXbSQGcAAAAAElFTkSuQmCC">
+        <label for="support-address">Endereço de depósito</label>
+        <textarea id="support-address" rows="2" readonly spellcheck="false">0x263add4f63569fbab0ffdbda025354c66a3c5ef2</textarea>
+        <button class="button primary" id="copy-support-address" type="button">Copiar endereço</button>
+      </div>
+    </div>
+    <div id="support-eth" role="tabpanel" aria-labelledby="support-tab-eth" hidden></div>
+    <p id="support-status" role="status"></p>
+  </div>
+  <div id="support-external" hidden>
+    <a class="button primary" target="_blank" rel="noopener noreferrer">Ir para a página de apoio <span data-icon="external"></span></a>
+  </div>
+</dialog>
+</body></html>

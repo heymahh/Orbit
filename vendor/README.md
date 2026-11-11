@@ -1,0 +1,1 @@
+Bibliotecas para o pacote do navegador: Marked 18.1.1 (MIT) e DOMPurify 3.4.17 (Apache-2.0 ou MPL-2.0). Arquivos e licenças copiados das distribuições oficiais npm. Recompilar com npm run build. Não há download de bibliotecas ao abrir o app.

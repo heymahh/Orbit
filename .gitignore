@@ -1,0 +1,10 @@
+.orbit/
+node_modules/
+*.log
+
+dist/
+/_backup-*/
+/_to_delete/
+/.impeccable/
+/.env
+/.env.*
